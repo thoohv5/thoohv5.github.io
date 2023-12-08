@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>errors</title>
+    <url>/2023/12/2e9054e4bf80.html</url>
+    <content><![CDATA[<h1 id="Go-内置-errors"><a href="#Go-内置-errors" class="headerlink" title="Go 内置 errors"></a>Go 内置 errors</h1><p>Go <code>error</code> 接口</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">type error interface &#123;</span><br><span class="line">	Error() string</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="error-创建"><a href="#error-创建" class="headerlink" title="error 创建"></a>error 创建</h1><h2 id="errors-New"><a href="#errors-New" class="headerlink" title="errors.New()"></a>errors.New()</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// http://golang.org/pkg/errors/error.go</span><br><span class="line">// errors 构建 error 对象</span><br><span class="line">type errorString struct &#123;</span><br><span class="line">    s string</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (e *errorString) Error() string &#123;</span><br><span class="line">    return e.s</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// New returns an error that formats as the given text.</span><br><span class="line">// Each call to New returns a distinct error value even if the text is identical.</span><br><span class="line">func New(text string) error &#123;</span><br><span class="line">	return &amp;errorString&#123;text&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：返回的指针。指针对于值的优势：内容可能相同；比较性能</p>
+<h2 id="fmt-Errof"><a href="#fmt-Errof" class="headerlink" title="fmt.Errof()"></a>fmt.Errof()</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">type wrapError struct &#123;</span><br><span class="line">	msg string</span><br><span class="line">	err error</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (e *wrapError) Error() string &#123;</span><br><span class="line">	return e.msg</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (e *wrapError) Unwrap() error &#123;</span><br><span class="line">	return e.err</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// Errorf formats according to a format specifier and returns the string as a</span><br><span class="line">// value that satisfies error.</span><br><span class="line">//</span><br><span class="line">// If the format specifier includes a %w verb with an error operand,</span><br><span class="line">// the returned error will implement an Unwrap method returning the operand. It is</span><br><span class="line">// invalid to include more than one %w verb or to supply it with an operand</span><br><span class="line">// that does not implement the error interface. The %w verb is otherwise</span><br><span class="line">// a synonym for %v.</span><br><span class="line">func Errorf(format string, a ...interface&#123;&#125;) error &#123;</span><br><span class="line">    p := newPrinter()</span><br><span class="line">    p.wrapErrs = true</span><br><span class="line">    p.doPrintf(format, a)</span><br><span class="line">    s := string(p.buf)</span><br><span class="line">    var err error</span><br><span class="line">    if p.wrappedErr == nil &#123;</span><br><span class="line">      err = errors.New(s)</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      err = &amp;wrapError&#123;s, p.wrappedErr&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    p.free()</span><br><span class="line">    return err</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>golang</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>统一错误码</title>
     <url>/2023/12/01095d29bc65.html</url>
     <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>错误处理一直以一是编程必需要面对的问题，错误处理如果做的好的话，代码的稳定性会很好。不同的语言有不同的出现处理的方式。</p>
@@ -22,20 +43,5 @@
       <tags>
         <tag>golang</tag>
       </tags>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/1970/01/2dad21b2590c.html</url>
-    <content><![CDATA[<h1 id="Go-内置-errors"><a href="#Go-内置-errors" class="headerlink" title="Go 内置 errors"></a>Go 内置 errors</h1><p>Go <code>error</code> 接口</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">type error interface &#123;</span><br><span class="line">	Error() string</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="error-创建"><a href="#error-创建" class="headerlink" title="error 创建"></a>error 创建</h1><h2 id="errors-New"><a href="#errors-New" class="headerlink" title="errors.New()"></a>errors.New()</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// http://golang.org/pkg/errors/error.go</span><br><span class="line">// errors 构建 error 对象</span><br><span class="line">type errorString struct &#123;</span><br><span class="line">    s string</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (e *errorString) Error() string &#123;</span><br><span class="line">    return e.s</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// New returns an error that formats as the given text.</span><br><span class="line">// Each call to New returns a distinct error value even if the text is identical.</span><br><span class="line">func New(text string) error &#123;</span><br><span class="line">	return &amp;errorString&#123;text&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>注意：返回的指针。指针对于值的优势：内容可能相同；比较性能</p>
-<h2 id="fmt-Errof"><a href="#fmt-Errof" class="headerlink" title="fmt.Errof()"></a>fmt.Errof()</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">type wrapError struct &#123;</span><br><span class="line">	msg string</span><br><span class="line">	err error</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (e *wrapError) Error() string &#123;</span><br><span class="line">	return e.msg</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (e *wrapError) Unwrap() error &#123;</span><br><span class="line">	return e.err</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// Errorf formats according to a format specifier and returns the string as a</span><br><span class="line">// value that satisfies error.</span><br><span class="line">//</span><br><span class="line">// If the format specifier includes a %w verb with an error operand,</span><br><span class="line">// the returned error will implement an Unwrap method returning the operand. It is</span><br><span class="line">// invalid to include more than one %w verb or to supply it with an operand</span><br><span class="line">// that does not implement the error interface. The %w verb is otherwise</span><br><span class="line">// a synonym for %v.</span><br><span class="line">func Errorf(format string, a ...interface&#123;&#125;) error &#123;</span><br><span class="line">    p := newPrinter()</span><br><span class="line">    p.wrapErrs = true</span><br><span class="line">    p.doPrintf(format, a)</span><br><span class="line">    s := string(p.buf)</span><br><span class="line">    var err error</span><br><span class="line">    if p.wrappedErr == nil &#123;</span><br><span class="line">      err = errors.New(s)</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      err = &amp;wrapError&#123;s, p.wrappedErr&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    p.free()</span><br><span class="line">    return err</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
   </entry>
 </search>
