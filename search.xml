@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>NMAP(Network Mapper)</title>
+    <url>/2023/12/30ef09bb7bb6.html</url>
+    <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="NMAP"><a href="#NMAP" class="headerlink" title="NMAP"></a>NMAP</h2><p>Network exploration tool and security &#x2F; port scanner<br>网络探索工具和安全&#x2F;端口扫描器</p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ol>
+<li>interesting ports table， port number，protocol，service name, state</li>
+<li>reverse DNS names</li>
+<li>operating system guesses</li>
+<li>device types</li>
+<li>MAC addresses</li>
+</ol>
+<h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nmap [&lt;Scan Type&gt; ...] [&lt;Options&gt;] &#123;&lt;target specification&gt;&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="Scan-type"><a href="#Scan-type" class="headerlink" title="Scan type"></a>Scan type</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># TCP SYN（隐形）扫描</span><br><span class="line">namp -sS</span><br><span class="line"></span><br><span class="line"># TCP 连接扫描</span><br><span class="line">namp -sT</span><br><span class="line"></span><br><span class="line"># UDP 扫描 ( `-sU` )</span><br><span class="line">namp -sU</span><br><span class="line"></span><br><span class="line"># 版本检测</span><br><span class="line">namp -sV</span><br><span class="line"></span><br><span class="line"># 启用操作系统检查</span><br><span class="line">nmap -O</span><br><span class="line"></span><br><span class="line"># 脚本引擎（NSE）</span><br><span class="line">nmap -sC</span><br><span class="line">nmap --script</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="target-specification"><a href="#target-specification" class="headerlink" title="target specification"></a>target specification</h4><p>P address, hostname, CIDR, IPv6, or octet ranges</p>
+<h3 id="Port-Scanning-Basics"><a href="#Port-Scanning-Basics" class="headerlink" title="Port Scanning Basics"></a>Port Scanning Basics</h3><p><a href="https://nmap.org/book/man-port-scanning-basics.html">https://nmap.org/book/man-port-scanning-basics.html</a></p>
+<ul>
+<li>open</li>
+<li>closed</li>
+<li>filtered</li>
+<li>unfiltered</li>
+<li>open|filtered</li>
+<li>closed|filtered</li>
+</ul>
+<h3 id="Timing-and-Performance"><a href="#Timing-and-Performance" class="headerlink" title="Timing and Performance"></a>Timing and Performance</h3><p><a href="https://nmap.org/book/man-performance.html">https://nmap.org/book/man-performance.html</a></p>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><p><a href="https://nmap.org/book/man.html">https://nmap.org/book/man.html</a></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Software</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>errors</title>
     <url>/2023/12/2e9054e4bf80.html</url>
     <content><![CDATA[<h1 id="Go-内置-errors"><a href="#Go-内置-errors" class="headerlink" title="Go 内置 errors"></a>Go 内置 errors</h1><p>Go <code>error</code> 接口</p>

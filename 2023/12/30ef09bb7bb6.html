@@ -19,28 +19,29 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"blog.thooh.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="错误处理一直以一是编程必需要面对的问题，错误处理如果做的好的话，代码的稳定性会很好。不同的语言有不同的出现处理的方式。">
+    <meta name="description" content="网络探索工具和安全&#x2F;端口扫描器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="统一错误码">
-<meta property="og:url" content="https://blog.thooh.com/2023/12/01095d29bc65.html">
+<meta property="og:title" content="NMAP(Network Mapper)">
+<meta property="og:url" content="https://blog.thooh.com/2023/12/30ef09bb7bb6.html">
 <meta property="og:site_name" content="速虎前沿|THOOH">
-<meta property="og:description" content="错误处理一直以一是编程必需要面对的问题，错误处理如果做的好的话，代码的稳定性会很好。不同的语言有不同的出现处理的方式。">
+<meta property="og:description" content="网络探索工具和安全&#x2F;端口扫描器">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-12-06T16:00:00.000Z">
+<meta property="article:published_time" content="2023-12-11T16:00:00.000Z">
 <meta property="article:modified_time" content="2023-12-12T03:06:16.309Z">
 <meta property="article:author" content="thooh">
-<meta property="article:tag" content="golang">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Software">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://blog.thooh.com/2023/12/01095d29bc65.html">
+<link rel="canonical" href="https://blog.thooh.com/2023/12/30ef09bb7bb6.html">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.thooh.com/2023/12/01095d29bc65.html","path":"2023/12/01095d29bc65.html","title":"统一错误码"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.thooh.com/2023/12/30ef09bb7bb6.html","path":"2023/12/30ef09bb7bb6.html","title":"NMAP(Network Mapper)"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>统一错误码 | 速虎前沿|THOOH</title>
+<title>NMAP(Network Mapper) | 速虎前沿|THOOH</title>
   
 
 
@@ -141,7 +142,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Error-vs-Exception"><span class="nav-number">2.</span> <span class="nav-text">Error vs Exception</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Error"><span class="nav-number">2.1.</span> <span class="nav-text">Error</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exception"><span class="nav-number">2.2.</span> <span class="nav-text">Exception</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Panic"><span class="nav-number">2.3.</span> <span class="nav-text">Panic</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E9%94%99%E8%AF%AF%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">处理错误的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8GO%E9%80%BB%E8%BE%91"><span class="nav-number">3.1.</span> <span class="nav-text">经典GO逻辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%8F%E8%94%BD%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84-error-%E7%9A%84%E5%A4%84%E7%90%86"><span class="nav-number">3.2.</span> <span class="nav-text">屏蔽过程中的 error 的处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A9%E7%94%A8%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E5%BB%B6%E8%BF%9F%E8%BF%90%E8%A1%8C"><span class="nav-number">3.3.</span> <span class="nav-text">利用函数式编程延迟运行</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">三层架构错误处理</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NMAP"><span class="nav-number">1.1.</span> <span class="nav-text">NMAP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD"><span class="nav-number">1.2.</span> <span class="nav-text">功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.1.</span> <span class="nav-text">命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Scan-type"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Scan type</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#target-specification"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">target specification</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Port-Scanning-Basics"><span class="nav-number">1.2.2.</span> <span class="nav-text">Port Scanning Basics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Timing-and-Performance"><span class="nav-number">1.2.3.</span> <span class="nav-text">Timing and Performance</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-number">2.</span> <span class="nav-text">附录</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -200,7 +201,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.thooh.com/2023/12/01095d29bc65.html">
+    <link itemprop="mainEntityOfPage" href="https://blog.thooh.com/2023/12/30ef09bb7bb6.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -213,12 +214,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="统一错误码 | 速虎前沿|THOOH">
-      <meta itemprop="description" content="错误处理一直以一是编程必需要面对的问题，错误处理如果做的好的话，代码的稳定性会很好。不同的语言有不同的出现处理的方式。">
+      <meta itemprop="name" content="NMAP(Network Mapper) | 速虎前沿|THOOH">
+      <meta itemprop="description" content="网络探索工具和安全/端口扫描器">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          统一错误码
+          NMAP(Network Mapper)
         </h1>
 
         <div class="post-meta-container">
@@ -228,15 +229,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2023-12-07 00:00:00" itemprop="dateCreated datePublished" datetime="2023-12-07T00:00:00+08:00">2023-12-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-12-12 11:06:16" itemprop="dateModified" datetime="2023-12-12T11:06:16+08:00">2023-12-12</time>
+      <time title="创建时间：2023-12-12 00:00:00 / 修改时间：11:06:16" itemprop="dateCreated datePublished" datetime="2023-12-12T00:00:00+08:00">2023-12-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -244,33 +239,47 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Golang/" itemprop="url" rel="index"><span itemprop="name">Golang</span></a>
+          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
         </span>
     </span>
 
   
 </div>
 
-            <div class="post-description">错误处理一直以一是编程必需要面对的问题，错误处理如果做的好的话，代码的稳定性会很好。不同的语言有不同的出现处理的方式。</div>
+            <div class="post-description">网络探索工具和安全/端口扫描器</div>
         </div>
       </header>
 
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>错误处理一直以一是编程必需要面对的问题，错误处理如果做的好的话，代码的稳定性会很好。不同的语言有不同的出现处理的方式。</p>
-<h1 id="Error-vs-Exception"><a href="#Error-vs-Exception" class="headerlink" title="Error vs Exception"></a>Error vs Exception</h1><h2 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h2><p>错误是程序中可能出现的问题，比如连接数据库失败，连接网络失败等，在程序设计中，<strong>错误处理是业务的一部分</strong>。</p>
-<h2 id="Exception"><a href="#Exception" class="headerlink" title="Exception"></a>Exception</h2><p>异常是指在不该出现问题的地方出现问题，是预料之外的，比如空指针引用，下标越界，向空 map 添加键值等</p>
-<h2 id="Panic"><a href="#Panic" class="headerlink" title="Panic"></a>Panic</h2><p>对于真正意外的情况，<strong>那些表示不可恢复的程序错误，不可恢复才使用 panic。对于其他的错误情况，我们应该是期望使用 error 来进行判定</strong></p>
-<p>💡 go 源代码很多地方写 panic, 但是工程实践业务代码不要主动写 panic，理论上 panic 只存在于 server 启动阶段，比如 config 文件解析失败，端口监听失败等等，所有业务逻辑禁止主动 panic，所有异步的 goroutine 都要用 recover 去兜底处理。</p>
-<h1 id="处理错误的方式"><a href="#处理错误的方式" class="headerlink" title="处理错误的方式"></a>处理错误的方式</h1><h2 id="经典GO逻辑"><a href="#经典GO逻辑" class="headerlink" title="经典GO逻辑"></a>经典GO逻辑</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">顺序处理每一步的error</span><br></pre></td></tr></table></figure>
+    <div class="post-body" itemprop="articleBody"><h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="NMAP"><a href="#NMAP" class="headerlink" title="NMAP"></a>NMAP</h2><p>Network exploration tool and security &#x2F; port scanner<br>网络探索工具和安全&#x2F;端口扫描器</p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ol>
+<li>interesting ports table， port number，protocol，service name, state</li>
+<li>reverse DNS names</li>
+<li>operating system guesses</li>
+<li>device types</li>
+<li>MAC addresses</li>
+</ol>
+<h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap [&lt;Scan Type&gt; ...] [&lt;Options&gt;] &#123;&lt;target specification&gt;&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="屏蔽过程中的-error-的处理"><a href="#屏蔽过程中的-error-的处理" class="headerlink" title="屏蔽过程中的 error 的处理"></a>屏蔽过程中的 error 的处理</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">将error 保存到对象内部，处理逻辑交给每个方法，本质上仍是顺序执行</span><br></pre></td></tr></table></figure>
 
-<h2 id="利用函数式编程延迟运行"><a href="#利用函数式编程延迟运行" class="headerlink" title="利用函数式编程延迟运行"></a>利用函数式编程延迟运行</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">错误交由调用方处理</span><br></pre></td></tr></table></figure>
+<h4 id="Scan-type"><a href="#Scan-type" class="headerlink" title="Scan type"></a>Scan type</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># TCP SYN（隐形）扫描</span><br><span class="line">namp -sS</span><br><span class="line"></span><br><span class="line"># TCP 连接扫描</span><br><span class="line">namp -sT</span><br><span class="line"></span><br><span class="line"># UDP 扫描 ( `-sU` )</span><br><span class="line">namp -sU</span><br><span class="line"></span><br><span class="line"># 版本检测</span><br><span class="line">namp -sV</span><br><span class="line"></span><br><span class="line"># 启用操作系统检查</span><br><span class="line">nmap -O</span><br><span class="line"></span><br><span class="line"># 脚本引擎（NSE）</span><br><span class="line">nmap -sC</span><br><span class="line">nmap --script</span><br></pre></td></tr></table></figure>
 
-<h1 id="三层架构错误处理"><a href="#三层架构错误处理" class="headerlink" title="三层架构错误处理"></a>三层架构错误处理</h1><p>结合 <a target="_blank" rel="noopener" href="http://github.com/pkg/errors">github.com&#x2F;pkg&#x2F;errors</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Dao 层使用 Wrap 上抛错误</span><br><span class="line"></span><br><span class="line">Service 层追加信息</span><br><span class="line"></span><br><span class="line">MiddleWare 统一打印错误日志</span><br></pre></td></tr></table></figure>
+
+<h4 id="target-specification"><a href="#target-specification" class="headerlink" title="target specification"></a>target specification</h4><p>P address, hostname, CIDR, IPv6, or octet ranges</p>
+<h3 id="Port-Scanning-Basics"><a href="#Port-Scanning-Basics" class="headerlink" title="Port Scanning Basics"></a>Port Scanning Basics</h3><p><a target="_blank" rel="noopener" href="https://nmap.org/book/man-port-scanning-basics.html">https://nmap.org/book/man-port-scanning-basics.html</a></p>
+<ul>
+<li>open</li>
+<li>closed</li>
+<li>filtered</li>
+<li>unfiltered</li>
+<li>open|filtered</li>
+<li>closed|filtered</li>
+</ul>
+<h3 id="Timing-and-Performance"><a href="#Timing-and-Performance" class="headerlink" title="Timing and Performance"></a>Timing and Performance</h3><p><a target="_blank" rel="noopener" href="https://nmap.org/book/man-performance.html">https://nmap.org/book/man-performance.html</a></p>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><p><a target="_blank" rel="noopener" href="https://nmap.org/book/man.html">https://nmap.org/book/man.html</a></p>
+
     </div>
 
     
@@ -279,18 +288,19 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/golang/" rel="tag"># golang</a>
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/Software/" rel="tag"># Software</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/2023/12/2e9054e4bf80.html" rel="prev" title="errors">
+                  <i class="fa fa-angle-left"></i> errors
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/12/2e9054e4bf80.html" rel="next" title="errors">
-                  errors <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
