@@ -68,9 +68,10 @@
     <title>rpm-build</title>
     <url>/2023/12/b8749c34d082.html</url>
     <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>RPM 包管理器 （RPM） 是一个运行在 Red Hat Enterprise Linux、CentOS 和 Fedora 上的包管理系统。RPM 使您能够更轻松地分发、管理和更新为红帽企业 Linux、CentOS 和 Fedora 创建的软件。许多软件供应商通过传统的存档文件（如压缩包）分发他们的软件。但是，将软件打包到 RPM 包中有几个优点。这些优点概述如下。</p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># centos7</span><br><span class="line">yum install -y gcc rpm-build rpm-devel rpmlint make python bash coreutils diffutils patch rpmdevtools</span><br><span class="line"></span><br><span class="line"># Centos8</span><br><span class="line">dnf install -y gcc rpm-build rpm-devel rpmlint make python bash coreutils diffutils patch rpmdevtools</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># centos7</span><br><span class="line">yum install -y gcc rpm-build rpm-devel rpmlint make python bash coreutils diffutils patch rpmdevtools</span><br><span class="line"></span><br><span class="line"># Centos8</span><br><span class="line">dnf install -y gcc rpm-build rpm-devel rpmlint make python bash coreutils diffutils patch rpmdevtools</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h2 id="工作目录"><a href="#工作目录" class="headerlink" title="工作目录"></a>工作目录</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 生成工作目录</span><br><span class="line">rpmdev-setuptree</span><br></pre></td></tr></table></figure>
+<h2 id="工作目录"><a href="#工作目录" class="headerlink" title="工作目录"></a>工作目录</h2><p>RPM制作的工作目录，用于源代码解压，编译，安装以及打包的场所</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 生成工作目录</span><br><span class="line">rpmdev-setuptree</span><br></pre></td></tr></table></figure>
 
 <table>
 <thead>
@@ -101,12 +102,12 @@
 <td>存放生成的源码rpm包</td>
 </tr>
 </tbody></table>
-<h3 id="spec-文件"><a href="#spec-文件" class="headerlink" title=".spec 文件"></a>.spec 文件</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpmdev-newspec xxx</span><br></pre></td></tr></table></figure>
+<h3 id="spec-文件"><a href="#spec-文件" class="headerlink" title=".spec 文件"></a>.spec 文件</h3><h4 id="文件生成"><a href="#文件生成" class="headerlink" title="文件生成"></a>文件生成</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpmdev-newspec xxx</span><br></pre></td></tr></table></figure>
 
-<table>
+<h4 id="文件配置说明"><a href="#文件配置说明" class="headerlink" title="文件配置说明"></a>文件配置说明</h4><table>
 <thead>
 <tr>
-<th>参数</th>
+<th>项目</th>
 <th>说明</th>
 <th></th>
 </tr>
