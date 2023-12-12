@@ -27,7 +27,7 @@
 <meta property="og:description" content="网络探索工具和安全&#x2F;端口扫描器">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-12-11T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-12-12T03:06:16.309Z">
+<meta property="article:modified_time" content="2023-12-12T04:42:11.419Z">
 <meta property="article:author" content="thooh">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="Software">
@@ -142,7 +142,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NMAP"><span class="nav-number">1.1.</span> <span class="nav-text">NMAP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD"><span class="nav-number">1.2.</span> <span class="nav-text">功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.1.</span> <span class="nav-text">命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Scan-type"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Scan type</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#target-specification"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">target specification</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Port-Scanning-Basics"><span class="nav-number">1.2.2.</span> <span class="nav-text">Port Scanning Basics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Timing-and-Performance"><span class="nav-number">1.2.3.</span> <span class="nav-text">Timing and Performance</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-number">2.</span> <span class="nav-text">附录</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NMAP"><span class="nav-number">1.1.</span> <span class="nav-text">NMAP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD"><span class="nav-number">1.2.</span> <span class="nav-text">功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.1.</span> <span class="nav-text">命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Scan-type"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Scan type</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Target-Specification"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">Target Specification</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Port-Scanning-Basics"><span class="nav-number">1.2.2.</span> <span class="nav-text">Port Scanning Basics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Timing-and-Performance"><span class="nav-number">1.2.3.</span> <span class="nav-text">Timing and Performance</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-number">3.</span> <span class="nav-text">附录</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -231,7 +231,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2023-12-12 00:00:00 / 修改时间：11:06:16" itemprop="dateCreated datePublished" datetime="2023-12-12T00:00:00+08:00">2023-12-12</time>
+      <time title="创建时间：2023-12-12 00:00:00 / 修改时间：12:42:11" itemprop="dateCreated datePublished" datetime="2023-12-12T00:00:00+08:00">2023-12-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -255,19 +255,22 @@
     
     <div class="post-body" itemprop="articleBody"><h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="NMAP"><a href="#NMAP" class="headerlink" title="NMAP"></a>NMAP</h2><p>Network exploration tool and security &#x2F; port scanner<br>网络探索工具和安全&#x2F;端口扫描器</p>
 <h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ol>
-<li>interesting ports table， port number，protocol，service name, state</li>
+<li>interesting ports table：port number，protocol，service name, state</li>
 <li>reverse DNS names</li>
 <li>operating system guesses</li>
 <li>device types</li>
 <li>MAC addresses</li>
 </ol>
-<h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap [&lt;Scan Type&gt; ...] [&lt;Options&gt;] &#123;&lt;target specification&gt;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><p><a target="_blank" rel="noopener" href="https://nmap.org/book/man-briefoptions.html">https://nmap.org/book/man-briefoptions.html</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap [&lt;Scan Type&gt; ...] [&lt;Options&gt;] &#123;&lt;target specification&gt;&#125;</span><br></pre></td></tr></table></figure>
 
 
 <h4 id="Scan-type"><a href="#Scan-type" class="headerlink" title="Scan type"></a>Scan type</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># TCP SYN（隐形）扫描</span><br><span class="line">namp -sS</span><br><span class="line"></span><br><span class="line"># TCP 连接扫描</span><br><span class="line">namp -sT</span><br><span class="line"></span><br><span class="line"># UDP 扫描 ( `-sU` )</span><br><span class="line">namp -sU</span><br><span class="line"></span><br><span class="line"># 版本检测</span><br><span class="line">namp -sV</span><br><span class="line"></span><br><span class="line"># 启用操作系统检查</span><br><span class="line">nmap -O</span><br><span class="line"></span><br><span class="line"># 脚本引擎（NSE）</span><br><span class="line">nmap -sC</span><br><span class="line">nmap --script</span><br></pre></td></tr></table></figure>
 
 
-<h4 id="target-specification"><a href="#target-specification" class="headerlink" title="target specification"></a>target specification</h4><p>P address, hostname, CIDR, IPv6, or octet ranges</p>
+<h4 id="Target-Specification"><a href="#Target-Specification" class="headerlink" title="Target Specification"></a>Target Specification</h4><p>IP address, hostname, CIDR, IPv6, or octet ranges</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 多个主机规范</span><br><span class="line">nmap scanme.nmap.org 192.168.0.0/8 10.0.0,1,3-7.-</span><br><span class="line"></span><br><span class="line"># 无DNS解析</span><br><span class="line">nmap -n</span><br></pre></td></tr></table></figure>
+
 <h3 id="Port-Scanning-Basics"><a href="#Port-Scanning-Basics" class="headerlink" title="Port Scanning Basics"></a>Port Scanning Basics</h3><p><a target="_blank" rel="noopener" href="https://nmap.org/book/man-port-scanning-basics.html">https://nmap.org/book/man-port-scanning-basics.html</a></p>
 <ul>
 <li>open</li>
@@ -278,7 +281,9 @@
 <li>closed|filtered</li>
 </ul>
 <h3 id="Timing-and-Performance"><a href="#Timing-and-Performance" class="headerlink" title="Timing and Performance"></a>Timing and Performance</h3><p><a target="_blank" rel="noopener" href="https://nmap.org/book/man-performance.html">https://nmap.org/book/man-performance.html</a></p>
-<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><p><a target="_blank" rel="noopener" href="https://nmap.org/book/man.html">https://nmap.org/book/man.html</a></p>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># 操作系统</span><br><span class="line">nmap -sS -n -O -T4 --osscan-guess --max-os-tries 1 --noninteractive 10.2.13.98  </span><br><span class="line">nmap -6 -sS -n -O -T5 --osscan-guess --max-os-tries 1 --noninteractive 2001::99  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># TCP</span><br><span class="line">nmap -n -T4 -sT  10.2.13.98  </span><br><span class="line">nmap -6 -n -T4 -sT 2001::99  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">​# TCP &amp; Version</span><br><span class="line">nmap -n -sT -T4 -sV 10.2.13.98  </span><br><span class="line">nmap -6 -n -sT -T4 -sV 2001::99  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># UDP</span><br><span class="line">nmap -n -T4 -sU  10.2.13.98  </span><br><span class="line">nmap -6 -n -T4 -sU 2001::99  </span><br><span class="line">​  </span><br><span class="line"></span><br><span class="line"># HTTP title​ </span><br><span class="line">nmap -n -T4 --script=http-title       10.2.13.98  </span><br><span class="line">nmap -6  -n -T4 --script=http-title   2001::99  </span><br><span class="line">​   </span><br></pre></td></tr></table></figure>
+
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><p><a target="_blank" rel="noopener" href="https://nmap.org/book/man.html">https://nmap.org/book/man.html</a><br><a target="_blank" rel="noopener" href="https://nmap.org/book/port-scanning-options.html#port-scanning-options-ports">https://nmap.org/book/port-scanning-options.html#port-scanning-options-ports</a></p>
 
     </div>
 
